@@ -1,0 +1,79 @@
+.product-detail {
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #eee;
+
+    .product-detail__action-button {
+      background-color: #eabf00;
+    }
+  }
+
+  &__shipper {
+    position: absolute;
+    color: #ececec;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-size: .6em;
+    background-color: #1b1a20;
+    cursor: default;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    position: relative;
+    padding: 0 20px;
+    height: 45px;
+
+    &::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      background-color: #eabf00;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      margin-left: -10px;
+    }
+  }
+
+  &__price {
+    height: 60px;
+
+    &--value {
+      b {
+        font-size: 1.5em;
+      }
+    }
+
+    &--installment {
+      color: #9c9b9b;
+
+      b {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__action-button {
+    background-color: #1b1a20;
+    color: #fff;
+    padding: 15px 0;
+    margin-top: 10px;
+    cursor: pointer;
+    -webkit-transition: background-color .2s;
+    transition: background-color .2s;
+  }
+}
