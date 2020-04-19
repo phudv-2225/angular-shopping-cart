@@ -1,0 +1,15 @@
+<div class="product-filter">
+  <h5 class="product-filter__title">
+    Sizes
+  </h5>
+  <div *ngFor="let size of sizes" class="product-filter__available-size">
+    <div class="product-filter__size-checkbox-group" (click)="toggleCheckboxChange(size)">
+      <input
+        type="checkbox"
+        [value]="size.key"
+        [checked]="size.checked"
+      >
+      <span class="checkmark">{{ size.value }}</span>
+    </div>
+  </div>
+</div>
