@@ -1,0 +1,25 @@
+<div class="product-detail">
+  <div *ngIf="product.isFreeShipping" class="product-detail__shipper">
+    Free shipping
+  </div>
+  <div class="product-detail__image">
+    <img [src]="imageProduct">
+  </div>
+  <p class="product-detail__title">
+    {{ product.title }}
+  </p>
+  <div class="product-detail__price">
+    <div class="product-detail__price--value">
+      <small>{{ product.currencyFormat }}</small>
+      <b>{{ nuberBeforeDot }}</b>
+      <span>{{ nuberAfterDot }}</span>
+    </div>
+    <div *ngIf="isInstallment" class="product-detail__price--installment">
+      <span>or {{ product.installments }} x</span>
+      <b>{{ product.currencyFormat }}{{ installmentPrice }}</b>
+    </div>
+  </div>
+  <div class="product-detail__action-button">
+    Add to card
+  </div>
+</div>

@@ -7,7 +7,7 @@ import { ProductService } from './services/product.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'angular-shopping-cart';
+  title = 'Angular shopping cart';
 
   constructor(private productService: ProductService) { }
 
