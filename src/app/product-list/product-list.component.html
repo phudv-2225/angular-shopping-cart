@@ -5,10 +5,10 @@
     </div>
     <div class="product-list__sort">
       Order by
-      <select>
-        <option value="">Select</option>
-        <option value="lowestprice">Lowest to highest</option>
-        <option value="highestprice">Highest to lowest</option>
+      <select (change)="changeSortProduct($event)">
+        <ng-container *ngFor="let sort of sorts">
+          <option [value]="sort.key">{{ sort.value }}</option>
+        </ng-container>
       </select>
     </div>
   </div>

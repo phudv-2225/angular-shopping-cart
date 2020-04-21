@@ -24,9 +24,7 @@ export class ProductService {
   }
 
   filterProductBySize(sizes: Size[]): Observable<Product[]> {
-    let filterSizes = sizes.map((size: Size) => {
-      regexFilterBySize(size.key)
-    }).join("|");
+    let filterSizes = sizes.map((size: Size) => regexFilterBySize(size.key)).join("|");
 
     let urlFilterSizes = this.productsUrl + "?availableSizes=(" + filterSizes + ")";
 

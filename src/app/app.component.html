@@ -8,6 +8,8 @@
   <div class="app__product-list col-10">
     <app-product-list
       [products]="products"
+      [sorts]="sorts"
+      (onChangeSortProduct)="changeSortProduct($event)"
     ></app-product-list>
   </div>
 </div>
