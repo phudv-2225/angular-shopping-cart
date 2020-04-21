@@ -6,3 +6,12 @@ export function formatPrice(x, currency) {
       return x.toFixed(2);
   }
 }
+
+export function regexFilterBySize(key) {
+  let regex = '';
+  regex = regex.concat('^', key, '$');
+  regex = regex.concat('|^', key, ',+');
+  regex = regex.concat('|,+', key, ',+');
+  regex = regex.concat('|,+', key, '$');
+  return regex;
+}

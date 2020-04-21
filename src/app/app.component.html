@@ -1,9 +1,14 @@
 <div class="app row">
   <div class="app__product-filter col-2">
-    <h5>Sizes: </h5>
+    <app-product-filter
+      [sizes]="sizes"
+      (onClickFilterProduct)="clickFilterProduct($event)"
+    ></app-product-filter>
   </div>
   <div class="app__product-list col-10">
-    <app-product-list></app-product-list>
+    <app-product-list
+      [products]="products"
+    ></app-product-list>
   </div>
 </div>
 <app-cart></app-cart>
