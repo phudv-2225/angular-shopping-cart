@@ -8,6 +8,7 @@ import { Size } from '../models/size';
 })
 export class ProductFilterComponent implements OnInit {
   @Output() onClickFilterProduct: EventEmitter<Size> = new EventEmitter<Size>();
+  @Output() onClickRepo: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() sizes: Size[];
 
   constructor() { }
@@ -17,6 +18,10 @@ export class ProductFilterComponent implements OnInit {
 
   toggleCheckboxChange(size: Size) {
     this.onClickFilterProduct.emit(size);
+  }
+
+  clickRepo() {
+    this.onClickRepo.emit(true);
   }
 
 }

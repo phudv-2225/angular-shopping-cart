@@ -58,4 +58,28 @@
       border: 1px solid transparent;
     }
   }
+
+  &__info {
+    text-align: center;
+
+    &--text {
+      color: #aaa;
+      margin-bottom: 8px;
+      display: inline-block;
+      font-size: 14px;
+    }
+
+    &--button {
+      text-align: center;
+
+      button {
+        margin: 0 4px;
+
+        img {
+          width: 15px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+  }
 }

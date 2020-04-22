@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   products: Product[];
   sizes: Size[];
   sorts: Sort[];
+  isLoading = true;
 
   constructor(
     private productService: ProductService
@@ -28,8 +29,10 @@ export class AppComponent implements OnInit{
   }
 
   getProduct(){
+    this.isLoading = true;
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data;
+      this.isLoading = false;
     });
   }
 
@@ -57,9 +60,11 @@ export class AppComponent implements OnInit{
   }
 
   filterBySizes() {
+    this.isLoading = true;
     let sizes = this.sizes.filter((size: Size) => size.checked === true);
     this.productService.filterProductBySize(sizes).subscribe((data: any) => {
       this.products = data;
+      this.isLoading = false;
     });
   }
 
@@ -80,5 +85,9 @@ export class AppComponent implements OnInit{
         this.getProduct();
         break;
     }
+  }
+
+  clickRepo() {
+    window.location.href = "https://github.com/phudv-0958/angular-shopping-cart";
   }
 }
