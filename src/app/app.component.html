@@ -1,16 +1,25 @@
 <div class="app row">
+  <div class="app__image" (click)="clickRepo()">
+    <img src="/assets/images/github.svg">
+  </div>
   <div class="app__product-filter col-2">
     <app-product-filter
       [sizes]="sizes"
       (onClickFilterProduct)="clickFilterProduct($event)"
+      (onClickRepo)="clickRepo()"
     ></app-product-filter>
   </div>
   <div class="app__product-list col-10">
-    <app-product-list
-      [products]="products"
-      [sorts]="sorts"
-      (onChangeSortProduct)="changeSortProduct($event)"
-    ></app-product-list>
+    <ng-container *ngIf="isLoading; else noLoading">
+      <app-loading></app-loading>
+    </ng-container>
+    <ng-template #noLoading>
+      <app-product-list
+        [products]="products"
+        [sorts]="sorts"
+        (onChangeSortProduct)="changeSortProduct($event)"
+      ></app-product-list>
+    </ng-template>
   </div>
 </div>
 <app-cart></app-cart>

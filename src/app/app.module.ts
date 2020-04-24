@@ -10,6 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductFilterComponent } from './product-filter/product-filter.componen
     ProductListComponent,
     ProductDetailComponent,
     CartComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
