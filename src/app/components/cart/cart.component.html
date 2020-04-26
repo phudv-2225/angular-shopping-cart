@@ -1,95 +1,31 @@
 <div class="shopping-cart" [ngClass]="{'shopping-cart--open': isCartOpen}">
   <span class="bag bag--shopping-cart-closed" *ngIf="!isCartOpen" (click)="changeCart()">
-    <span class="bag__quantity">30</span>
+    <span class="bag__quantity">{{ countItems }}</span>
   </span>
   <div class="shopping-cart__close-btn" (click)="changeCart()" *ngIf="isCartOpen">X</div>
   <div class="shopping-cart__content">
     <div class="shopping-cart__content__header">
       <span class="bag">
-        <span class="bag__quantity">30</span>
+        <span class="bag__quantity">{{ countItems }}</span>
       </span>
     </div> <!--end shopping-cart__content__header -->
 
     <div class="shopping-cart__content__shelf-container">
-      <div class="shelf-item">
+      <div class="shelf-item" *ngFor="let item of cart.items">
         <div class="shelf-item__del"></div>
         <div class="shelf-item__thumb">
-          <img src="https://thebs.vn/wp-content/uploads/2018/12/33417-4.jpg"/>
+          <img [src]="'/assets/images/' + item.product.sku + '.jpg'" >
         </div>
         <div class="shelf-item__details">
-          <p class="title">Wine Skul T-Shirt</p>
+          <p class="title">{{ item.product.title }}</p>
           <p class=desc>
-            X | Wine
+            {{ item.product.currencyFormat }}
             <br>
-            Quantity: 1
+            Quantity: {{ item.count }}
           </p>
         </div>
         <div class="shelf-item__price">
-          <p>13.25$</p>
-          <div>
-            <button disabled="" class="change-product-button">-</button>
-            <button class="change-product-button">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="shelf-item">
-        <div class="shelf-item__del"></div>
-        <div class="shelf-item__thumb">
-          <img src="https://thebs.vn/wp-content/uploads/2018/12/33417-4.jpg"/>
-        </div>
-        <div class="shelf-item__details">
-          <p class="title">Wine Skul T-Shirt</p>
-          <p class=desc>
-            X | Wine
-            <br>
-            Quantity: 1
-          </p>
-        </div>
-        <div class="shelf-item__price">
-          <p>13.25$</p>
-          <div>
-            <button disabled="" class="change-product-button">-</button>
-            <button class="change-product-button">+</button>
-          </div>
-        </div>
-      </div>
-      <div class="shelf-item">
-        <div class="shelf-item__del"></div>
-        <div class="shelf-item__thumb">
-          <img src="https://thebs.vn/wp-content/uploads/2018/12/33417-4.jpg"/>
-        </div>
-        <div class="shelf-item__details">
-          <p class="title">Wine Skul T-Shirt</p>
-          <p class=desc>
-            X | Wine
-            <br>
-            Quantity: 1
-          </p>
-        </div>
-        <div class="shelf-item__price">
-          <p>13.25$</p>
-          <div>
-            <button disabled="" class="change-product-button">-</button>
-            <button class="change-product-button">+</button>
-          </div>
-        </div>
-      </div>
-      <div class="shelf-item">
-        <div class="shelf-item__del"></div>
-        <div class="shelf-item__thumb">
-          <img src="https://thebs.vn/wp-content/uploads/2018/12/33417-4.jpg"/>
-        </div>
-        <div class="shelf-item__details">
-          <p class="title">Wine Skul T-Shirt</p>
-          <p class=desc>
-            X | Wine
-            <br>
-            Quantity: 1
-          </p>
-        </div>
-        <div class="shelf-item__price">
-          <p>13.25$</p>
+          <p>{{ (item.product.price * item.count) | number }}$</p>
           <div>
             <button disabled="" class="change-product-button">-</button>
             <button class="change-product-button">+</button>
@@ -100,7 +36,7 @@
 
     <div class="shopping-cart__footer">
       <div class="sub"> SUBTOTAl</div>
-      <div class="sub-price"><p class="sub-price__val">$ 413.65</p><small class="sub-price__installment"><span>OR UP TO 5 x $ 82.73</span></small>
+      <div class="sub-price"><p class="sub-price__val">$ {{ cartTotalPrice | number }}</p><small class="sub-price__installment"><span>OR UP TO {{ maxInstallmentPrice }} x $ {{ (cartTotalPrice / maxInstallmentPrice) | number }}</span></small>
       </div>
       <div class="buy-btn">Checkout</div>
     </div> <!--end shopping-cart__footer -->

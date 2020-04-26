@@ -19,7 +19,12 @@
       <b>{{ product.currencyFormat }}{{ installmentPrice }}</b>
     </div>
   </div>
-  <div class="product-detail__action-button">
+  <div class="product-detail__action-button" (click) = "addToCart(product)">
     Add to card
   </div>
 </div>
+<app-cart
+ [(isCartOpen)] = "isCartOpen"
+ [cart] = "cart" >
+
+</app-cart>
