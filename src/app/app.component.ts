@@ -69,6 +69,7 @@ export class AppComponent implements OnInit{
   }
 
   changeSortProduct(key: string){
+    console.log(key)
     switch (key) {
       case SortKey.lowest:
         this.products.sort((product_1, product_2) => product_1.price - product_2.price);

@@ -16,7 +16,12 @@
     <div class="col-3 product-list__item">
       <app-product-detail
         [product]="product"
+        (onAddToCart) = "addToCart($event)"
       ></app-product-detail>
     </div>
   </ng-container>
 </div>
+<app-cart
+ [(isCartOpen)] = "isCartOpen"
+ [cart] = "cart" >
+</app-cart>
