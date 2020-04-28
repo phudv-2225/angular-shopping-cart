@@ -20,27 +20,15 @@ export class CartComponent implements OnInit {
   }
 
   get countItems(): number {
-    if (this.cart.items.length === 0) {
-      return 0
-    } else {
-      let count = 0;
-      this.cart.items.map(item => {
-        count += item.count;
-      })
-      return count
-    }
+    return this.cart.items.reduce((a, b) => {
+      return a + b.count;
+    }, 0)
   }
 
   get cartTotalPrice(): number {
-    if (this.cart.items.length === 0) {
-      return 0
-    } else {
-      let total = 0;
-      this.cart.items.map(item => {
-        total += item.product.price * item.count;
-      })
-      return total
-    }
+    return  this.cart.items.reduce((a, b) => {
+      return a + (b.product.price * b.count);
+    }, 0)
   }
 
   get maxInstallmentPrice(): number {
