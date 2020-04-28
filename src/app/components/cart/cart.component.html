@@ -11,8 +11,8 @@
     </div> <!--end shopping-cart__content__header -->
 
     <div class="shopping-cart__content__shelf-container">
-      <div class="shelf-item" *ngFor="let item of cart.items">
-        <div class="shelf-item__del"></div>
+      <div class="shelf-item" *ngFor="let item of cart.items; let i = index" [ngClass]="{'shelf-item--mouseover': mouseoverArray[i]}">
+        <div class="shelf-item__del" (click)="removeItem(i)" (mouseover)="mouseoverItem(i)" (mouseout)="mouseoutItem(i)"></div>
         <div class="shelf-item__thumb">
           <img [src]="'/assets/images/' + item.product.sku + '.jpg'" >
         </div>
@@ -27,8 +27,8 @@
         <div class="shelf-item__price">
           <p>{{ (item.product.price * item.count) | number }}$</p>
           <div>
-            <button disabled="" class="change-product-button">-</button>
-            <button class="change-product-button">+</button>
+            <button [disabled]="item.count <= 1" class="change-product-button" (click)="decreaseCountProduct(i)">-</button>
+            <button class="change-product-button" (click)="increaseCountProduct(i)">+</button>
           </div>
         </div>
       </div>
