@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/product';
 import { formatPrice } from '../../functions/utils';
+import { Cart } from 'src/app/models/cart';
+import { BindingFlags } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-product-detail',
@@ -9,6 +11,7 @@ import { formatPrice } from '../../functions/utils';
 })
 export class ProductDetailComponent implements OnInit {
   @Input() product: Product;
+  @Output() onAddToCart: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
@@ -39,4 +42,7 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  addToCart(product: Product) {
+    this.onAddToCart.emit(product);
+  }
 }
